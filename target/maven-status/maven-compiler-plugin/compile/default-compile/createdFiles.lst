@@ -1,0 +1,4 @@
+com\brenoepic\utils\Mention.class
+com\brenoepic\utils\RegexUtility.class
+com\brenoepic\commands\BlockMentionCommand.class
+com\brenoepic\events\MentionUser.class

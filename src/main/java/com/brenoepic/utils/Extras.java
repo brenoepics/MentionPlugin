@@ -13,16 +13,15 @@ public class Extras {
     Emulator.getTexts().register("commands.error.cmd_mention.user_not_found", "Sorry, I could not find the mentioned user.");
     Emulator.getTexts().register("commands.cmd_mention_everyone.message", "%SENDER% said: %MESSAGE%");
     Emulator.getTexts().register("commands.cmd_mention.allfriends", "all friends");
-
+    Emulator.getTexts().register("commands.cmd_mention.look", "${image.library.url}notifications/fig/%LOOK%.png");
+    Emulator.getTexts().register("commands.cmd_mention_everyone.look", "${image.library.url}notifications/fig/%LOOK%.png");
     Emulator.getConfig().register("commands.cmd_mention_friends.prefix", "friends");
-    Emulator.getConfig().register("commands.cmd_mention.message.delete", "1");
+    Emulator.getConfig().register("commands.cmd_mention.message.delete", "0");
     Emulator.getConfig().register("commands.cmd_mention.follow.enabled", "1");
-    Emulator.getConfig().register("commands.cmd_mention.installed", "1");
-    Emulator.getConfig().register("commands.cmd_mention.message.show_username.enabled", "0");
-    Emulator.getConfig().register("commands.cmd_mention.look", "${image.library.url}notifications/fig/%LOOK%.png");
-    Emulator.getConfig().register("commands.cmd_mention_everyone.look", "${image.library.url}notifications/fig/%LOOK%.png");
+    Emulator.getConfig().register("commands.cmd_mention.message.show_username.enabled", "1");
     Emulator.getConfig().register("commands.cmd_mention_everyone.follow.enabled", "1");
-  }
+    Emulator.getConfig().register("commands.cmd_mention.installed", "1");
+   }
 
   private static boolean registerPermission(String name, boolean defaultReturn) {
     try (Connection connection = Emulator.getDatabase().getDataSource().getConnection()) {

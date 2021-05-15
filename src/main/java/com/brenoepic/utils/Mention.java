@@ -20,7 +20,7 @@ public class Mention {
   public static String Everyone(Habbo sender, String message) {
     THashMap < String, String > mention = new THashMap < > ();
     mention.put("display", "BUBBLE");
-    mention.put("image", Emulator.getConfig().getValue("commands.cmd_mention_everyone.look").replace("%LOOK%", sender.getHabboInfo().getLook()));
+    mention.put("image", Emulator.getTexts().getValue("commands.cmd_mention_everyone.look").replace("%LOOK%", sender.getHabboInfo().getLook()));
     final Room room = sender.getHabboInfo().getCurrentRoom();
     if (room != null && Emulator.getConfig().getBoolean("commands.cmd_mention_everyone.follow.enabled")) {
       mention.put("linkUrl", "event:navigator/goto/" + sender.getHabboInfo().getCurrentRoom().getId());
@@ -41,18 +41,15 @@ public class Mention {
   public static String Friends(Habbo sender, String message) {
     THashMap < String, String > mention = new THashMap < > ();
     mention.put("display", "BUBBLE");
-    mention.put("image", Emulator.getConfig().getValue("commands.cmd_mention.look").replace("%LOOK%", sender.getHabboInfo().getLook()));
+    mention.put("image", Emulator.getTexts().getValue("commands.cmd_mention.look").replace("%LOOK%", sender.getHabboInfo().getLook()));
     final Room room = sender.getHabboInfo().getCurrentRoom();
     if (room != null && Emulator.getConfig().getBoolean("commands.cmd_mention.follow.enabled")) {
       mention.put("linkUrl", "event:navigator/goto/" + sender.getHabboInfo().getCurrentRoom().getId());
     }
     mention.put("message", Emulator.getTexts().getValue("commands.cmd_mention.message").replace("%MESSAGE%", message).replace("%SENDER%", sender.getHabboInfo().getUsername()));
-    for (final MessengerBuddy user : sender.getMessenger().getFriends().values()) {
-      if (user.getOnline() == 0)
-          continue;
-      
-      Habbo receiver = Emulator.getGameEnvironment().getHabboManager().getHabbo(user.getUsername());
-      if(receiver != null)
+    for ( MessengerBuddy player : sender.getMessenger().getFriends().values()) {
+      Habbo receiver = Emulator.getGameEnvironment().getHabboManager().getHabbo(player.getId());
+      if (receiver != null)
       receiver.getClient().sendResponse(new BubbleAlertComposer("mention", mention));
   }
 
@@ -62,7 +59,7 @@ public class Mention {
   public static String User(Habbo sender, Habbo receiver, String message) {
     THashMap < String, String > mention = new THashMap < > ();
     mention.put("display", "BUBBLE");
-    mention.put("image", Emulator.getConfig().getValue("commands.cmd_mention.look").replace("%LOOK%", sender.getHabboInfo().getLook()));
+    mention.put("image", Emulator.getTexts().getValue("commands.cmd_mention.look").replace("%LOOK%", sender.getHabboInfo().getLook()));
     final Room room = sender.getHabboInfo().getCurrentRoom();
     if (room != null && Emulator.getConfig().getBoolean("commands.cmd_mention.follow.enabled")) {
       mention.put("linkUrl", "event:navigator/goto/" + sender.getHabboInfo().getCurrentRoom().getId());

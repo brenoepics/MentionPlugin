@@ -13,9 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 
-/**
- * @author BrenoEpic
- */
+
 public class MentionPlugin extends HabboPlugin implements EventListener {
     public static final Logger LOGGER = LoggerFactory.getLogger(MentionPlugin.class);
     public static MentionPlugin INSTANCE = null;
